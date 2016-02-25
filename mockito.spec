@@ -4,7 +4,7 @@
 
 Name:           %{?scl_prefix}%{pkg_name}
 Version:        1.10.19
-Release:        7.1%{?dist}
+Release:        7.2%{?dist}
 Summary:        A Java mocking framework
 
 License:        MIT
@@ -20,7 +20,7 @@ Patch3:         setting-naming-policy.patch
 Patch4:         fix-incompatible-types.patch
 
 BuildArch:      noarch
-BuildRequires:  %{?scl_prefix_java_common}javapackages-local
+BuildRequires:  %{?scl_prefix}javapackages-local
 BuildRequires:  %{?scl_prefix_java_common}ant
 BuildRequires:  %{?scl_prefix_java_common}objenesis
 BuildRequires:  %{?scl_prefix_java_common}cglib
@@ -103,6 +103,9 @@ set -e -x
 %doc NOTICE
 
 %changelog
+* Mon Feb 08 2016 Michal Srb <msrb@redhat.com> - 1.10.19-7.2
+- Fix BR on maven-local & co.
+
 * Tue Jan 19 2016 Mikolaj Izdebski <mizdebsk@redhat.com> - 1.10.19-7.1
 - SCL-ize package
 
