@@ -4,7 +4,7 @@
 
 Name:           %{?scl_prefix}%{pkg_name}
 Version:        1.10.19
-Release:        7.2%{?dist}
+Release:        7.3%{?dist}
 Summary:        A Java mocking framework
 
 License:        MIT
@@ -95,6 +95,8 @@ set -e -x
 %{?scl:EOF}
 
 %files -f .mfiles
+%dir %{_javadir}/%{pkg_name}
+%dir %{_mavenpomdir}/%{pkg_name}
 %doc LICENSE
 %doc NOTICE
 
@@ -103,6 +105,9 @@ set -e -x
 %doc NOTICE
 
 %changelog
+* Thu Apr 14 2016 Michal Srb <msrb@redhat.com> - 1.10.19-7.3
+- Fix directory ownership (Resolves: rhbz#1325866)
+
 * Mon Feb 08 2016 Michal Srb <msrb@redhat.com> - 1.10.19-7.2
 - Fix BR on maven-local & co.
 
