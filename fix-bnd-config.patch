@@ -23,7 +23,7 @@
                  org.mockito.asm.signature;resolution:=optional, \
 -                org.mockito.*
 +                org.mockito.*, \
-+                net.sf.cglib*
++                net.sf.cglib.core,net.sf.cglib.proxy,net.sf.cglib.reflect
  
  Private-Package: org.mockito.*
  
