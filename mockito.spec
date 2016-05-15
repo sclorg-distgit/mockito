@@ -4,7 +4,7 @@
 
 Name:           %{?scl_prefix}mockito
 Version:        1.10.19
-Release:        3.5%{?dist}
+Release:        3.7%{?dist}
 Summary:        A Java mocking framework
 
 License:        MIT
@@ -24,13 +24,13 @@ BuildRequires:  %{?scl_prefix_java_common}javapackages-local
 
 BuildRequires:  %{?scl_prefix_java_common}ant
 BuildRequires:  %{?scl_prefix_java_common}objenesis
-BuildRequires:  %{?scl_prefix_java_common}cglib
+BuildRequires:  %{?scl_prefix}cglib
 BuildRequires:  %{?scl_prefix_java_common}junit
 BuildRequires:  %{?scl_prefix_java_common}hamcrest
 BuildRequires:  %{?scl_prefix_maven}aqute-bnd
 
 Requires:       %{?scl_prefix_java_common}objenesis
-Requires:       %{?scl_prefix_java_common}cglib
+Requires:       %{?scl_prefix}cglib
 Requires:       %{?scl_prefix_java_common}junit
 Requires:       %{?scl_prefix_java_common}hamcrest
 
@@ -57,7 +57,7 @@ sed -i 's/Bundle-Version= ${version}/Bundle-Version= %{version}/' conf/mockito-c
 %patch3 -p1
 %patch4 -p1
 
-%pom_add_dep net.sf.cglib:cglib maven/mockito-core.pom
+%pom_add_dep net.sf.cglib:cglib:3.1 maven/mockito-core.pom
 find . -name "*.java" -exec sed -i "s|org\.mockito\.cglib|net\.sf\.cglib|g" {} +
 mkdir -p lib/compile
 %{?scl:EOF}
@@ -97,6 +97,12 @@ sed -i -e "s|@version@|%{version}|g" maven/mockito-core.pom
 %doc NOTICE
 
 %changelog
+* Tue Feb 16 2016 Mat Booth <mat.booth@redhat.com> - 1.10.19-3.7
+- Specify compat version of cglib
+
+* Tue Feb 16 2016 Mat Booth <mat.booth@redhat.com> - 1.10.19-3.6
+- Use newer version of cglib and import more packages in OSGi metadata
+
 * Tue Sep 01 2015 Mat Booth <mat.booth@redhat.com> - 1.10.19-3.5
 - Require hamcrest explicitly in OSGi metadata
 - Resolves: rhbz#1249667
